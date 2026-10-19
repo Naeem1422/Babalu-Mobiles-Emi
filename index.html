@@ -1,0 +1,948 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Babalu Mobiles &amp; Electronics - Customer EMI Form</title>
+<style>
+:root{
+  --navy:#12304a;
+  --blue:#1769e0;
+  --blue-dark:#0d4fa8;
+  --bg:#f3f6f9;
+  --card:#ffffff;
+  --text:#17202a;
+  --muted:#667788;
+  --border:#d8e0e8;
+  --soft:#eef5ff;
+  --success:#16835b;
+}
+*{box-sizing:border-box}
+body{
+  font-family:Inter,Arial,sans-serif;
+  background:var(--bg);
+  margin:0;
+  padding:24px 14px;
+  color:var(--text);
+}
+.card{
+  max-width:560px;
+  margin:auto;
+  background:var(--card);
+  border:1px solid #e1e7ed;
+  border-radius:20px;
+  overflow:hidden;
+  box-shadow:0 8px 30px rgba(18,48,74,.10);
+}
+.card>h1{
+  margin:0;
+  padding:22px 24px 4px;
+  text-align:left;
+  font-size:24px;
+  color:var(--navy);
+  letter-spacing:-.3px;
+}
+.sub{
+  text-align:left;
+  color:var(--blue);
+  font-size:13px;
+  font-weight:700;
+  padding:0 24px 20px;
+  border-bottom:1px solid var(--border);
+}
+label{
+  font-weight:700;
+  display:block;
+  margin:18px 24px 7px;
+  font-size:13px;
+  color:#33495c;
+}
+input,select{
+  width:calc(100% - 48px);
+  margin:0 24px;
+  padding:13px 14px;
+  border:1px solid #cbd5df;
+  border-radius:10px;
+  font-size:16px;
+  color:var(--text);
+  background:#fff;
+  outline:none;
+}
+input:focus,select:focus{
+  border-color:var(--blue);
+  box-shadow:0 0 0 3px rgba(23,105,224,.10);
+}
+input[readonly]{
+  background:#f5f7f9;
+  color:#526474;
+  font-weight:700;
+  cursor:not-allowed;
+}
+button{
+  width:calc(100% - 48px);
+  margin:18px 24px 0;
+  padding:14px;
+  border:0;
+  border-radius:10px;
+  background:var(--blue);
+  color:white;
+  font-size:15px;
+  font-weight:700;
+  letter-spacing:.1px;
+  box-shadow:0 3px 8px rgba(23,105,224,.18);
+}
+button:hover{background:var(--blue-dark)}
+.result{
+  margin:24px;
+  background:var(--soft);
+  border:1px solid #d5e5fa;
+  border-radius:16px;
+  padding:18px;
+}
+.result:before{
+  content:"EMI SUMMARY";
+  display:block;
+  font-size:11px;
+  font-weight:800;
+  letter-spacing:1px;
+  color:var(--blue);
+  margin-bottom:8px;
+}
+.big{
+  text-align:center;
+  font-size:34px;
+  font-weight:800;
+  margin:7px 0 16px;
+  color:var(--navy);
+}
+.row{
+  display:flex;
+  justify-content:space-between;
+  gap:14px;
+  padding:10px 0;
+  border-bottom:1px solid #d7e4f2;
+  font-size:14px;
+}
+.row b{text-align:right}
+.row:last-child{border:0}
+table{
+  width:calc(100% - 48px);
+  margin:20px 24px;
+  border-collapse:collapse;
+  font-size:12px;
+}
+th,td{padding:8px 4px;border-bottom:1px solid #ddd;text-align:right}
+th:first-child,td:first-child{text-align:left}
+.live-datetime{font-size:12px;color:var(--muted);text-align:center;margin:4px 0 14px;font-weight:700}
+.note{
+  font-size:11px;
+  color:var(--muted);
+  margin:15px 24px;
+  line-height:1.5;
+}
+.share-card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:18px;
+  margin:18px 24px;
+  box-shadow:0 3px 12px rgba(18,48,74,.06);
+}
+.share-card h2{
+  margin:0 0 12px;
+  font-size:17px;
+  text-align:center;
+  color:var(--navy);
+}
+.share-card .brand{
+  font-weight:700;
+  text-align:center;
+  color:var(--blue);
+  margin-bottom:12px;
+}
+@media(max-width:420px){
+  body{padding:10px 8px}
+  .card{border-radius:16px}
+  .card>h1{padding-left:18px;padding-right:18px}
+  .sub{padding-left:18px;padding-right:18px}
+  label{margin-left:18px;margin-right:18px}
+  input,select{width:calc(100% - 36px);margin-left:18px;margin-right:18px}
+  button{width:calc(100% - 36px);margin-left:18px;margin-right:18px}
+  .result{margin:18px}
+  .share-card{margin:18px}
+  .note{margin-left:18px;margin-right:18px}
+  table{width:calc(100% - 36px);margin-left:18px;margin-right:18px}
+}
+
+.customer-section{margin:20px 24px;padding:18px;border:1px solid var(--border);border-radius:14px;background:#fff}
+.customer-section h2{margin:0 0 8px;color:var(--navy);font-size:18px}
+.customer-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 14px}
+.customer-field label{margin:8px 0 5px}
+.customer-field input,.customer-field select,.customer-field textarea{width:100%;margin:0;padding:10px;border:1px solid #cbd5df;border-radius:8px;font-size:14px}
+.customer-field.full{grid-column:1/-1}
+.customer-field small{color:var(--muted);font-size:11px}
+#signatureCanvas{display:block;width:100%;height:240px;border:1px dashed #8797a8;border-radius:8px;touch-action:none;background:#fff}
+@media(max-width:520px){.customer-grid{grid-template-columns:1fr}.customer-field.full{grid-column:auto}}
+.product-photo-preview,.document-photo-preview{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;margin-top:10px;align-items:start;clear:both}
+.product-photo-preview img,.document-photo-preview img{display:block;width:100%;height:80px;max-height:80px;object-fit:contain;border:1px solid var(--border);border-radius:8px;background:#fff;padding:4px;min-width:0;box-sizing:border-box}
+.photo-tile{min-width:0;break-inside:avoid;page-break-inside:avoid;border:1px solid #ddd;border-radius:8px;padding:6px;text-align:center;font-size:11px;overflow:hidden;background:#fff}
+.photo-tile img{margin:0 auto}
+/* Compact on-screen previews so product and customer document photos do not look long. */
+.product-photo-preview img,.document-photo-preview img,#productPhotoPreview img,#documentPhotoPreview img,.photo-tile img{height:80px;max-height:80px;object-fit:contain;}
+.product-photo-box{min-height:0;padding:5px;}
+@media print{
+  #productPhotos + small,#idUploads + small,#uploadNames{display:none!important;}
+  #productPhoto1,#productPhoto2{display:none!important;}
+  #productPhoto1Preview,#productPhoto2Preview{display:block!important;}
+  .product-photo-boxes{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:6mm!important;clear:both!important;break-inside:avoid!important;page-break-inside:avoid!important;}
+  .product-photo-box{display:block!important;min-height:48mm!important;break-inside:avoid!important;page-break-inside:avoid!important;}
+  .product-photo-box img{display:block!important;width:100%!important;height:38mm!important;object-fit:contain!important;}
+  #idUploads + small{display:none!important;}
+  #productPhotoPreview,#documentPhotoPreview{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;gap:6mm!important;margin:3mm 0 5mm!important;align-items:start!important;clear:both!important;break-inside:avoid!important;page-break-inside:avoid!important;width:100%!important;}
+  #productPhotoPreview input[type="file"],#documentPhotoPreview input[type="file"]{display:none!important;}
+  #productPhotoPreview .photo-tile,#documentPhotoPreview .photo-tile{display:block!important;position:static!important;float:none!important;width:auto!important;max-width:100%!important;box-sizing:border-box!important;min-height:48mm!important;break-inside:avoid!important;page-break-inside:avoid!important;overflow:hidden!important;}
+  #productPhotoPreview img,#documentPhotoPreview img{display:block!important;position:static!important;float:none!important;width:100%!important;height:38mm!important;max-height:38mm!important;object-fit:contain!important;margin:0 auto!important;break-inside:avoid!important;page-break-inside:avoid!important;border:1px solid #999!important;background:#fff!important;}
+  .customer-field.full:has(#productPhotoPreview),.customer-field.full:has(#documentPhotoPreview){display:block!important;clear:both!important;float:none!important;break-inside:avoid!important;page-break-inside:avoid!important;}
+  .product-photo-box{min-width:0;}
+}
+@media print{
+  body{background:#fff!important;padding:0!important;margin:0!important}
+  .card{max-width:none!important;box-shadow:none!important;border-radius:0!important;padding:10px!important}
+  .card>h1,.card>.sub,
+  .card>label,.card>input,.card>select,
+  .card>button,.note:not(#frequencyNote),
+  table{display:none!important}
+  .result{margin-top:0!important;border:1px solid #ccc!important;background:#fff!important}
+  #screenshotCard{display:block!important;background:#fff!important;border:1px solid #ccc!important;box-shadow:none!important;page-break-inside:avoid}
+  #frequencyNote{display:block!important}
+  @page{size:A4;margin:12mm}
+}
+
+/* Final print/PDF rules: keep both customer document photos visible. */
+@media print {
+  #customerSection { display:block !important; visibility:visible !important; }
+  #documentPhotoPreview { display:grid !important; grid-template-columns:repeat(2,minmax(0,1fr)) !important; width:100% !important; gap:6mm !important; }
+  #documentPhotoPreview .document-photo-box { display:block !important; visibility:visible !important; min-height:35mm !important; height:auto !important; overflow:visible !important; break-inside:avoid !important; page-break-inside:avoid !important; }
+  #documentPhotoPreview input[type="file"], #documentPhotoPreview small { display:none !important; }
+  #documentPhotoPreview img { display:block !important; visibility:visible !important; width:100% !important; height:28mm !important; max-height:28mm !important; object-fit:contain !important; }
+  #documentPhoto1Placeholder, #documentPhoto2Placeholder { display:none !important; }
+  #documentPhotoPreview label { display:block !important; visibility:visible !important; }
+}
+
+
+/* Passport-size photo layout for print and browser Save as PDF. */
+@media print {
+  #customerSection #customerLivePhotoPreview,
+  #documentPhotoPreview #documentPhoto1Preview, #documentPhotoPreview #documentPhoto2Preview,
+  #productPhotoPreview #productPhoto1Preview, #productPhotoPreview #productPhoto2Preview {
+    width:35mm !important; height:45mm !important; max-width:35mm !important;
+    max-height:45mm !important; object-fit:contain !important; margin:2mm auto !important;
+  }
+  #documentPhotoPreview, #productPhotoPreview, .product-photo-boxes {
+    grid-template-columns:repeat(2,minmax(0,1fr)) !important; gap:4mm !important;
+  }
+  #documentPhotoPreview .document-photo-box, #productPhotoPreview .photo-tile,
+  .product-photo-boxes .product-photo-box { min-height:0 !important; height:auto !important; padding:3mm !important; }
+  #customerLivePhoto + .photo-tile { width:42mm !important; max-width:42mm !important; min-height:0 !important; }
+  #customerLivePhotoPreview { display:block !important; }
+  .action-options { display:none !important; }
+}
+
+</style>
+</head>
+<body>
+<div class="card">
+<h1>Customer EMI Form</h1>
+<div class="sub" style="font-weight:700;color:#1769e0;margin-bottom:4px">Babalu Mobiles &amp; Electronics</div>
+
+
+<div class="customer-section" id="customerSection">
+<h2>Babalu Mobiles &amp; Electronics</h2>
+<div style="font-size:12px;color:#1769e0;font-weight:700;margin-bottom:8px">CUSTOMER EMI APPLICATION FORM</div>
+<div class="customer-grid">
+<div class="customer-field"><label for="customerName">Customer Full Name *</label><input id="customerName" autocomplete="name" placeholder="Enter customer name"></div>
+<div class="customer-field"><label for="customerMobile">Mobile Number *</label><input id="customerMobile" type="tel" inputmode="numeric" maxlength="10" placeholder="10-digit mobile number"></div>
+<div class="customer-field"><label for="customerAltMobile">Alternate Mobile Number</label><input id="customerAltMobile" type="tel" inputmode="numeric" maxlength="10" placeholder="Optional"></div>
+<div class="customer-field"><label for="customerDob">Date of Birth</label><input id="customerDob" type="date"></div>
+<div class="customer-field full"><label for="customerAddress">Full Address</label><textarea id="customerAddress" rows="2" placeholder="House, area, city, PIN code"></textarea></div>
+<div class="customer-field"><label for="idProofType">ID Proof Type</label><select id="idProofType"><option value="">Select ID proof</option><option>Aadhaar Card</option><option>PAN Card</option><option>Voter ID</option><option>Driving Licence</option><option>Passport</option><option>Other</option></select></div>
+<div class="customer-field"><label for="idProofNumber">ID Proof Number</label><input id="idProofNumber" placeholder="Enter ID proof number"></div>
+<div class="customer-field full"><label for="customerLivePhoto">Customer Live Photo</label><input id="customerLivePhoto" type="file" accept="image/*" capture="user"><div class="photo-tile" style="margin-top:8px"><img id="customerLivePhotoPreview" alt="Customer live photo preview" style="display:none;width:100%;height:100px;object-fit:contain"><div id="customerLivePhotoPlaceholder">No live photo selected</div></div></div>
+<div class="customer-field full"><label>Customer Document Photos</label><small>Select a photo separately for each box. Photos will appear in the application and in print / Save as PDF.</small><div id="documentPhotoPreview" class="document-photo-preview"><div class="photo-tile document-photo-box"><label for="documentPhoto1" style="display:block;font-weight:700;margin-bottom:6px">Customer Document Photo 1</label><input id="documentPhoto1" type="file" accept="image/*" capture="environment"><img id="documentPhoto1Preview" alt="Customer document photo 1" style="display:none"><div id="documentPhoto1Placeholder">No photo selected</div></div><div class="photo-tile document-photo-box"><label for="documentPhoto2" style="display:block;font-weight:700;margin-bottom:6px">Customer Document Photo 2</label><input id="documentPhoto2" type="file" accept="image/*" capture="environment"><img id="documentPhoto2Preview" alt="Customer document photo 2" style="display:none"><div id="documentPhoto2Placeholder">No photo selected</div></div></div></div>
+<div class="customer-field"><label for="productCategory">Product Category</label><select id="productCategory"><option value="">Select product category</option><option>Mobile Phone</option><option>Tablet</option><option>Laptop / Computer</option><option>Smart TV</option><option>Refrigerator</option><option>Washing Machine</option><option>Air Conditioner</option><option>Speaker / Audio</option><option>Smartwatch</option><option>Mobile Accessories</option><option>Other Electronics</option></select></div>
+<div class="customer-field full" id="productScannerSection">
+<label>Product Scanner (Barcode / QR)</label>
+<div style="padding:12px;border:1px solid #cbd5df;border-radius:10px;background:#f8fbff">
+  <video id="productScannerVideo" playsinline muted style="display:none;width:100%;max-height:260px;object-fit:contain;background:#111;border-radius:8px"></video>
+  <div id="productScannerStatus" role="status" style="font-size:12px;color:#526474;margin:6px 0">Tap Start Scanner and point the camera at the product barcode or QR code.</div>
+  <button type="button" id="startProductScanner" onclick="startProductScanner()" style="margin:8px 0 0;width:100%">📷 Start Product Scanner</button>
+  <button type="button" id="stopProductScanner" onclick="stopProductScanner()" style="display:none;margin:8px 0 0;width:100%;background:#667788">Stop Scanner</button>
+</div>
+<small>Scanned code fills IMEI / Serial Number when it is a 15-digit IMEI; otherwise it fills Product Brand / Model. Product-name lookup requires a connected product database.</small>
+</div>
+<div class="customer-field"><label for="productModel">Product Brand / Model</label><input id="productModel" placeholder="Brand and model"></div>
+<div class="customer-field"><label for="productCondition">Product Condition</label><select id="productCondition"><option value="">Select condition</option><option>New</option><option>Open Box</option><option>Used / Refurbished</option></select></div>
+<div class="customer-field"><label for="productWarranty">Warranty / Accessories</label><input id="productWarranty" placeholder="Warranty or included accessories"></div>
+<div class="customer-field"><label for="imei">IMEI / Serial Number</label><input id="imei" inputmode="numeric" placeholder="Device IMEI or serial number"></div>
+<div class="customer-field"><label for="productColor">Product Colour</label><input id="productColor" placeholder="Colour"></div>
+<div class="customer-field"><label for="productStorage">Storage / Variant</label><input id="productStorage" placeholder="e.g. 8 GB / 256 GB"></div>
+<div class="customer-field full"><label>Product Photos</label><div class="product-photo-boxes" id="productPhotoPreview"><div class="product-photo-box photo-tile"><label for="productPhoto1">Product Photo 1</label><input id="productPhoto1" type="file" accept="image/*" capture="environment"><img id="productPhoto1Preview" alt="Product Photo 1 preview" style="display:none"><div id="productPhoto1Placeholder">No photo selected</div></div><div class="product-photo-box photo-tile"><label for="productPhoto2">Product Photo 2</label><input id="productPhoto2" type="file" accept="image/*" capture="environment"><img id="productPhoto2Preview" alt="Product Photo 2 preview" style="display:none"><div id="productPhoto2Placeholder">No photo selected</div></div></div></div>
+</div>
+</div>
+
+<label>Mobile / Loan Amount (₹)</label>
+<input id="price" type="number" value="0" min="0">
+
+<label>Finance Provider</label>
+<select id="provider">
+<option selected>ZestMoney Finance / BME Personal Finance</option>
+<option value="personal">Personal Finance</option>
+</select>
+
+<label>CIBIL Score</label>
+<select id="cibilScore" onchange="updateRate()">
+<option value="0" selected>0</option>
+<option value="800">800+ — Excellent</option>
+<option value="750">750–799 — Very Good</option>
+<option value="700">700–749 — Good</option>
+<option value="650">650–699 — Fair</option>
+<option value="300">Below 650 — Lower Score</option>
+</select>
+
+<label>Down Payment (%) <span id="downLockLabel" style="color:#b45309;font-size:11px"></span></label>
+<select id="downPct" onchange="syncDownFromPct()">
+<option value="0" selected>0%</option><option value="20">20%</option><option value="25">25%</option><option value="30">30%</option>
+<option value="40">40%</option><option value="45">45%</option><option value="50">50%</option>
+<option value="custom">Custom</option>
+</select>
+
+<label>Down Payment (₹) 🔒</label>
+<input id="down" type="number" value="0" min="0" readonly>
+
+<div id="cibilDownNote" class="note" style="margin-top:6px;display:none;font-weight:700;color:#b45309">For loans above ₹10,000, down payment is automatically fixed by CIBIL and cannot be reduced.</div>
+
+<label>Annual Interest Rate (%) <span id="rateLockLabel">🔒</span></label>
+<input id="rate" type="number" value="0" readonly title="Interest rate is calculated automatically">
+<div id="personalFeeWrap" style="display:none">
+<label>Processing Fee (₹) — Personal Finance</label>
+<input id="personalFee" type="number" value="0" min="0">
+</div>
+<div id="rateNote" class="note" style="margin-top:6px;display:none">Higher CIBIL score + higher down payment = lower interest rate. 40% or more down payment = 0% interest for Good/Very Good/Excellent CIBIL; Fair and Lower Score still carry interest. Interest rate is calculated automatically.</div>
+
+<label for="firstDueDate">EMI First Due Date</label>
+<input id="firstDueDate" type="date" onchange="calculate()">
+
+<label>EMI Payment Frequency</label>
+<select id="frequency" onchange="updateTenureOptions();calculate()">
+<option value="monthly" selected>Monthly EMI</option>
+<option value="daily">Daily EMI</option>
+<option value="weekly">Weekly EMI</option>
+<option value="15days">15 Days EMI</option>
+</select>
+
+<label id="tenureLabel">EMI Tenure (Months)</label>
+<select id="months" onchange="calculate()">
+<option value="0" selected>0</option><option>3</option><option>6</option><option>9</option><option>12</option>
+<option>18</option><option>24</option><option>36</option>
+</select>
+
+
+<div class="customer-section" id="autopaySection">
+<h2>AutoPay / EMI Payment Details</h2>
+<div class="customer-grid">
+<div class="customer-field"><label for="autopayMethod">AutoPay Method</label><select id="autopayMethod"><option value="">Select method</option><option>UPI AutoPay</option><option>Bank Account e-Mandate</option><option>Manual UPI Payment</option><option>Manual Bank Transfer</option></select></div>
+<div class="customer-field"><label for="autopayStatus">Mandate Status</label><select id="autopayStatus"><option>Not set up</option><option>Pending customer approval</option><option>Active</option><option>Failed</option><option>Not applicable</option></select></div>
+<div class="customer-field"><label for="upiMobile">UPI Mobile Number</label><input id="upiMobile" type="tel" inputmode="numeric" maxlength="10" placeholder="UPI-linked mobile number"></div>
+<div class="customer-field"><label for="upiAppName">UPI App Name</label><select id="upiAppName"><option value="">Select UPI app</option><option>Google Pay</option><option>PhonePe</option><option>Paytm</option><option>BHIM</option><option>Amazon Pay</option><option>WhatsApp Pay</option><option>Bank App</option><option>Other</option></select></div>
+<div class="customer-field"><label for="upiBankName">UPI / Bank Name</label><select id="upiBankName"><option value="">Select bank</option><option>State Bank of India</option><option>HDFC Bank</option><option>ICICI Bank</option><option>Axis Bank</option><option>Punjab National Bank</option><option>Bank of Baroda</option><option>Canara Bank</option><option>Union Bank of India</option><option>Kotak Mahindra Bank</option><option>Bank of India</option><option>Indian Bank</option><option>Central Bank of India</option><option>Indian Overseas Bank</option><option>UCO Bank</option><option>Bank of Maharashtra</option><option>Federal Bank</option><option>IDFC FIRST Bank</option><option>IndusInd Bank</option><option>Yes Bank</option><option>AU Small Finance Bank</option><option>Other</option></select></div>
+<div class="customer-field"><label for="bankAccountName">Account Holder Name</label><input id="bankAccountName" placeholder="As per bank account"></div>
+<div class="customer-field"><label for="mandateRef">Mandate / UPI Reference (optional)</label><input id="mandateRef" placeholder="Reference number, if available"></div>
+</div>
+</div>
+
+<button onclick="calculate()">Calculate EMI</button>
+
+
+<div class="result">
+<div class="row"><span>Finance Provider</span><b id="providerOut">ZestMoney Finance / BME Personal Finance</b></div>
+<div id="emiLabel">Monthly EMI</div>
+<div class="big" id="emi">₹0</div>
+<div class="note" id="frequencyNote" style="text-align:center;margin-top:-8px;margin-bottom:10px">
+Payment amount changes according to the selected EMI frequency.
+</div>
+<div class="row"><span>Loan Amount</span><b id="loanAmountOut">₹0</b></div>
+<div class="row"><span>Processing Fee</span><b id="processFee">₹0</b></div>
+<div class="row"><span>Finance Amount (Loan + Fee)</span><b id="principal">₹0</b></div>
+<div class="row"><span>Total Interest</span><b id="interest">₹0</b></div>
+<div class="row"><span>Total Repayment</span><b id="total">₹0</b></div>
+</div>
+
+<div id="screenshotCard" class="share-card">
+  <div class="brand"></div>
+  <div id="shotFinanceName" style="text-align:center;font-weight:700;font-size:24px;margin:-4px 0 10px;color:#1d4ed8;">ZestMoney Finance / BME Personal Finance</div>
+  <h2>EMI Payment Details</h2>
+  <div id="liveDateTime" class="live-datetime">Date &amp; Time: --</div>
+  <div class="row"><span>Mobile / Loan Amount</span><b id="shotPrice">₹0</b></div>
+  <div class="row"><span>Down Payment</span><b id="shotDown">₹0</b></div>
+  <div class="row"><span>Finance Provider</span><b id="shotProvider">ZestMoney Finance / BME Personal Finance</b></div>
+  <div class="row"><span>First EMI Due Date</span><b id="shotFirstDueDate">—</b></div>
+  <div class="row"><span>Payment Frequency</span><b id="shotFrequency">Monthly</b></div>
+  <div class="row"><span>Tenure</span><b id="shotTenure">12 Months</b></div>
+  <div class="row"><span>Interest Rate</span><b id="shotRate">0%</b></div>
+  <div class="row"><span>Processing Fee</span><b id="shotFee">₹0</b></div>
+  <div class="row"><span>Finance Amount</span><b id="shotFinance">₹0</b></div>
+  <div class="row"><span>Total Interest</span><b id="shotInterest">₹0</b></div>
+  <div class="row"><span>Total Repayment</span><b id="shotTotal">₹0</b></div>
+  <div class="big" id="shotEmi">₹0</div>
+  <div style="text-align:center;font-weight:700" id="shotEmiLabel">Monthly EMI</div>
+  <div class="note" style="text-align:center">Thank you for choosing .</div>
+</div>
+
+<table>
+<thead><tr><th>Month</th><th>EMI</th><th>Principal</th><th>Interest</th><th>Balance</th></tr></thead>
+<tbody id="schedule"></tbody>
+</table>
+
+<div class="customer-section" id="signatureSection">
+<h2>Customer Declaration &amp; Signature</h2>
+<p style="font-size:12px;line-height:1.5">I confirm that the information provided in this application is accurate and that I understand the EMI amount, tenure, fees and payment method shown above. Any AutoPay mandate must be separately authorised by me through the bank or UPI provider.</p>
+<div class="customer-field"><label for="signatureCanvas">Customer Signature (draw below)</label><canvas id="signatureCanvas"></canvas><button type="button" onclick="clearSignature()" style="background:#667788;margin-top:8px">Clear Signature</button></div>
+<div class="customer-grid">
+<div class="customer-field"><label for="customerDate">Date</label><input id="customerDate" type="date"></div>
+<div class="customer-field"><label for="staffName">Shop Representative</label><input id="staffName" placeholder="Staff name"></div>
+</div>
+</div>
+<div class="note">Processing fee rule: ₹0 at startup/no loan amount. After a loan amount is entered, ₹200 is added when the loan amount after down payment is ₹3,000 or less; ₹500 is added when it is more than ₹3,000. EMI is calculated on Loan Amount + Processing Fee.</div>
+<div class="note">Interest cap: total interest for the complete loan tenure will not exceed ₹3,000, including Personal Finance mode. Personal Finance mode: down payment, annual interest rate, processing fee, EMI frequency, and tenure are manually editable. CIBIL rules are not applied in this mode.</div>
+
+<div class="action-options" style="margin-top:22px;padding-top:14px;border-top:2px solid #d7e0ea;display:grid;grid-template-columns:1fr;gap:9px">
+  <h2 style="margin:0 0 2px">Application Actions</h2>
+  <button onclick="shareEMI()" style="background:#25a244">📤 Share EMI Details</button>
+  <button onclick="shareCompletePDF()" style="background:#7b3fc6">📄 Share Complete Application PDF</button>
+  <button onclick="saveScreenshot()" style="background:#6f42c1">📤 Share EMI Screenshot</button>
+  <button onclick="printEMI()" style="background:#343a40">🖨️ Print / Save Complete Application PDF</button>
+</div>
+</div>
+
+<script>
+
+function clearSignature(){const c=document.getElementById('signatureCanvas');if(!c)return;const ctx=c.getContext('2d');const d=window.devicePixelRatio||1;ctx.setTransform(1,0,0,1,0,0);ctx.clearRect(0,0,c.width,c.height);ctx.scale(d,d);ctx.lineWidth=2;ctx.lineCap='round';ctx.strokeStyle='#17202a';}
+(function setupSignature(){
+ const c=document.getElementById('signatureCanvas'); if(!c)return;
+ const resize=()=>{const r=c.getBoundingClientRect();const d=window.devicePixelRatio||1;c.width=Math.max(1,r.width*d);c.height=Math.max(1,r.height*d);const x=c.getContext('2d');x.scale(d,d);x.lineWidth=2;x.lineCap='round';x.strokeStyle='#17202a';};
+ resize();let drawing=false;
+ const pos=e=>{const r=c.getBoundingClientRect();return {x:e.clientX-r.left,y:e.clientY-r.top};};
+ c.addEventListener('pointerdown',e=>{drawing=true;c.setPointerCapture(e.pointerId);const p=pos(e);const x=c.getContext('2d');x.beginPath();x.moveTo(p.x,p.y);});
+ c.addEventListener('pointermove',e=>{if(!drawing)return;const p=pos(e);const x=c.getContext('2d');x.lineTo(p.x,p.y);x.stroke();});
+ ['pointerup','pointercancel'].forEach(ev=>c.addEventListener(ev,()=>drawing=false));
+})();
+function bindPhotoPreview(inputId, imgId, placeholderId){
+ const input=document.getElementById(inputId), img=document.getElementById(imgId), placeholder=document.getElementById(placeholderId);
+ if(!input || !img || !placeholder) return;
+ input.addEventListener('change',function(){
+   const file=this.files && this.files[0];
+   if(!file){img.removeAttribute('src');img.style.display='none';placeholder.style.display='block';return;}
+   if(!file.type.startsWith('image/')){alert('Please select an image file.');this.value='';return;}
+   const reader=new FileReader();
+   reader.onload=()=>{if(typeof reader.result==='string'){img.onload=()=>{img.style.display='block';placeholder.style.display='none';};img.src=reader.result;if(img.complete&&img.naturalWidth>0){img.style.display='block';placeholder.style.display='none';}}};
+   reader.onerror=()=>alert('Could not load this photo. Please try again.');
+   reader.readAsDataURL(file);
+ });
+}
+[1,2].forEach(n=>{
+ bindPhotoPreview('documentPhoto'+n,'documentPhoto'+n+'Preview','documentPhoto'+n+'Placeholder');
+ bindPhotoPreview('productPhoto'+n,'productPhoto'+n+'Preview','productPhoto'+n+'Placeholder');
+});
+bindPhotoPreview('customerLivePhoto','customerLivePhotoPreview','customerLivePhotoPlaceholder');
+
+let productScannerStream=null, productScannerActive=false, productScannerFrame=0;
+async function startProductScanner(){
+  const video=document.getElementById('productScannerVideo');
+  const status=document.getElementById('productScannerStatus');
+  if(!('BarcodeDetector' in window)){
+    status.textContent='Automatic barcode scanning is not supported in this browser. Try the latest Chrome on Android, or enter the code manually.';
+    alert('Your browser does not support automatic barcode scanning. Please try the latest Chrome browser.');
+    return;
+  }
+  try{
+    const detector=new BarcodeDetector({formats:['qr_code','ean_13','ean_8','code_128','code_39','upc_a','upc_e','itf','data_matrix','pdf417']});
+    productScannerStream=await navigator.mediaDevices.getUserMedia({video:{facingMode:{ideal:'environment'}},audio:false});
+    video.srcObject=productScannerStream;video.style.display='block';await video.play();
+    productScannerActive=true;
+    document.getElementById('startProductScanner').style.display='none';
+    document.getElementById('stopProductScanner').style.display='block';
+    status.textContent='Scanner active — hold the barcode or QR code steady in front of the camera.';
+    const scan=async()=>{
+      if(!productScannerActive)return;
+      try{
+        if(video.readyState>=2){
+          const codes=await detector.detect(video);
+          if(codes.length && codes[0].rawValue){
+            const value=codes[0].rawValue.trim();
+            if(/^\d{15}$/.test(value)){
+              document.getElementById('imei').value=value;
+              status.textContent='Scanned successfully. 15-digit IMEI added to IMEI / Serial Number.';
+            }else{
+              document.getElementById('productModel').value=value;
+              status.textContent='Scanned successfully. Code added to Product Brand / Model.';
+            }
+            stopProductScanner();
+            return;
+          }
+        }
+      }catch(e){}
+      productScannerFrame=requestAnimationFrame(scan);
+    };
+    productScannerFrame=requestAnimationFrame(scan);
+  }catch(e){
+    status.textContent='Camera could not start. Allow camera permission and use HTTPS or open the form in a supported browser.';
+    stopProductScanner();
+  }
+}
+function stopProductScanner(){
+  productScannerActive=false;
+  if(productScannerFrame)cancelAnimationFrame(productScannerFrame);
+  if(productScannerStream){productScannerStream.getTracks().forEach(t=>t.stop());productScannerStream=null;}
+  const video=document.getElementById('productScannerVideo');
+  if(video){video.pause();video.srcObject=null;video.style.display='none';}
+  const start=document.getElementById('startProductScanner'),stop=document.getElementById('stopProductScanner');
+  if(start)start.style.display='block';if(stop)stop.style.display='none';
+}
+function money(x){return "₹"+Math.round(x).toLocaleString("en-IN")}
+
+function fieldValue(id){const el=document.getElementById(id); if(!el)return ''; if(el.tagName==='SELECT') return el.options[el.selectedIndex]?.text || ''; return (el.value||'').trim();}
+function escHTML(value){return String(value??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));}
+function printableField(label,value){return `<div class="field"><b>${escHTML(label)}</b><span>${escHTML(value||'—')}</span></div>`;}
+function photoHTML(title,id){const img=document.getElementById(id);return `<div class="photo"><b>${escHTML(title)}</b>${img&&img.src&&img.style.display!=='none'?`<img src="${img.src}" alt="${escHTML(title)}">`:'<div class="empty">No photo selected</div>'}</div>`;}
+function signatureHTML(){const c=document.getElementById('signatureCanvas');try{return c?c.toDataURL('image/png'):''}catch(e){return ''}}
+async function shareCompletePDF(){
+ calculate();
+ const customerFullName = fieldValue('customerName') || 'Customer';
+ const safeCustomerName = customerFullName.normalize('NFKD').replace(/[^a-zA-Z0-9]+/g,'_').replace(/^_+|_+$/g,'') || 'Customer';
+ const pdfFileName = safeCustomerName + '_EMI_Application.pdf';
+ const photos=Array.from(document.querySelectorAll('#productPhoto1Preview,#productPhoto2Preview,#documentPhoto1Preview,#documentPhoto2Preview,#customerLivePhotoPreview')).filter(img=>img.src&&img.style.display!=='none');
+ await Promise.all(photos.map(img=>new Promise(resolve=>{if(img.complete&&img.naturalWidth>0)return resolve();const done=()=>resolve();img.addEventListener('load',done,{once:true});img.addEventListener('error',done,{once:true});setTimeout(done,2500);} )));
+ const freq=fieldValue('frequency');
+ const tenureLabel=getTenureDisplay();
+ const sig=signatureHTML();
+ const sections=[
+  ['Customer Details',[['Full Name','customerName'],['Mobile Number','customerMobile'],['Alternate Mobile','customerAltMobile'],['Date of Birth','customerDob'],['Full Address','customerAddress'],['ID Proof Type','idProofType'],['ID Proof Number','idProofNumber'],['Shop Representative','staffName'],['Application Date','customerDate']]],
+  ['Product / Electronics Details',[['Product Category','productCategory'],['Brand / Model','productModel'],['Product Condition','productCondition'],['Warranty / Accessories','productWarranty'],['IMEI / Serial Number','imei'],['Colour','productColor'],['Storage / Variant','productStorage'],['Product Price','price']]],
+  ['EMI & Finance Details',[['Finance Provider','provider'],['CIBIL Score','cibilScore'],['Down Payment','down'],['Down Payment Percentage','downPct'],['Annual Interest Rate','rate'],['Processing Fee',null],['Finance Amount',null],['EMI Frequency','frequency'],['Tenure',null],['EMI Amount',null],['Total Interest',null],['Total Repayment',null]]],
+  ['UPI / AutoPay Details',[['AutoPay Method','autopayMethod'],['Mandate Status','autopayStatus'],['UPI App Name','upiAppName'],['UPI Mobile Number','upiMobile'],['UPI / Bank Name','upiBankName'],['Account Holder Name','bankAccountName'],['Mandate / UPI Reference','mandateRef']]]
+ ];
+ const calculated={'Processing Fee':document.getElementById('processFee').textContent,'Finance Amount':document.getElementById('principal').textContent,'Tenure':tenureLabel,'EMI Amount':document.getElementById('emi').textContent,'Total Interest':document.getElementById('interest').textContent,'Total Repayment':document.getElementById('total').textContent};
+ const sectionsHTML=sections.map(([title,fields])=>`<section><h2>${escHTML(title)}</h2><div class="grid">${fields.map(([label,id])=>printableField(label,id?fieldValue(id):calculated[label])).join('')}</div></section>`).join('');
+ const docPhotos=photoHTML('Customer Document Photo 1','documentPhoto1Preview')+photoHTML('Customer Document Photo 2','documentPhoto2Preview');
+ const productPhotos=photoHTML('Product Photo 1','productPhoto1Preview')+photoHTML('Product Photo 2','productPhoto2Preview');
+ const livePhoto=photoHTML('Customer Live Photo','customerLivePhotoPreview');
+ const win=window.open('','_blank');
+ if(!win){alert('Please allow pop-ups for this form to print/save the complete PDF.');return;}
+ win.document.open();
+ win.document.write(`<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>BABALU MOBILES - Complete EMI Application</title><style>body{font:12px Arial,sans-serif;color:#17202a;margin:0;padding:18px;-webkit-print-color-adjust:exact;print-color-adjust:exact;text-rendering:geometricPrecision}h1{text-align:center;color:#12304a;font-size:22px;margin:0 0 4px}header{text-align:center;border-bottom:2px solid #1769e0;padding-bottom:12px;margin-bottom:14px}header p{margin:4px}section{border:1px solid #cbd5df;border-radius:8px;padding:10px;margin:10px 0;break-inside:avoid}h2{font-size:15px;color:#1769e0;margin:0 0 8px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:7px 12px}.field{border-bottom:1px solid #e1e7ed;padding:4px 0;min-width:0;overflow-wrap:anywhere}.field b{display:block;font-size:10px;color:#536577;margin-bottom:3px}.field span{white-space:pre-wrap} .photos{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6mm;align-items:start}.photo{border:1px solid #cbd5df;border-radius:7px;padding:3mm;break-inside:avoid;min-width:0;min-height:0;text-align:center}.photo b{display:block;margin-bottom:2mm}.photo img{width:35mm;height:45mm;max-width:35mm;object-fit:contain;display:block;margin:0 auto;image-rendering:auto}.photo,.field,section{box-sizing:border-box}.signature{display:block;image-rendering:auto}.empty{width:35mm;height:45mm;display:flex;align-items:center;justify-content:center;margin:0 auto;color:#788796;font-style:italic}.signature{max-width:240px;max-height:90px;object-fit:contain;border:1px solid #ddd}.emi-highlight{font-size:18px;font-weight:bold;color:#1769e0}.footer{font-size:10px;color:#536577;margin-top:12px}@page{size:A4;margin:10mm}@media print{body{padding:0}section{break-inside:avoid}}</style></head><body><header><h1>BABALU MOBILES &amp; ELECTRONICS</h1><p>Customer EMI Finance Application</p><p>Generated: ${escHTML(new Date().toLocaleString('en-IN'))}</p></header>${sectionsHTML}<section><h2>Customer Live Photo</h2><div class="photos">${livePhoto}</div></section><section><h2>Customer Document Photos</h2><div class="photos">${docPhotos}</div></section><section><h2>Product Photos</h2><div class="photos">${productPhotos}</div></section><section><h2>Customer Declaration &amp; Signature</h2><p>I confirm that the information provided in this application is accurate and that I understand the EMI amount, tenure, fees and payment method shown above. Any AutoPay mandate must be separately authorised by me through the bank or UPI provider.</p>${sig?`<img class="signature" src="${sig}" alt="Customer signature">`:'<p>Signature: __________________________</p>'}<p>Date: ${escHTML(fieldValue('customerDate')||new Date().toLocaleDateString('en-IN'))} &nbsp; Shop Representative: ${escHTML(fieldValue('staffName')||'—')}</p></section><p class="footer">Complete customer EMI application. Customer data, finance details, selected photos and signature are included in this PDF.</p><script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"><\/script><script>window.onload=async()=>{try{await new Promise(r=>setTimeout(r,1000));await Promise.all(Array.from(document.images).map(img=>img.complete?Promise.resolve():new Promise(resolve=>{img.onload=resolve;img.onerror=resolve;setTimeout(resolve,3000)})));if(!window.html2pdf)throw new Error('PDF generator unavailable');const opts={margin:8,filename:'${pdfFileName}',image:{type:'png'},html2canvas:{scale:3,useCORS:true,allowTaint:false,scrollY:0,backgroundColor:'#ffffff',logging:false},jsPDF:{unit:'mm',format:'a4',orientation:'portrait',compress:true},pagebreak:{mode:['css','legacy']}};const blob=await window.html2pdf().set(opts).from(document.body).outputPdf('blob');const file=new File([blob],'${pdfFileName}',{type:'application/pdf'});if(navigator.share&&navigator.canShare&&navigator.canShare({files:[file]})){try{await navigator.share({files:[file],title:'${customerFullName} - EMI Application',text:'Complete EMI application for ${customerFullName}'});return}catch(shareError){if(shareError&&shareError.name==='AbortError')return;}}const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download=file.name;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),60000);alert('PDF created for ' + customerFullName + ' and downloaded as ' + pdfFileName + '. Open Downloads to share it.');}catch(e){alert('Automatic PDF creation is unavailable. The complete application will open in print mode; choose Save as PDF, then share the saved PDF.');window.print();}};<\/script></body></html>`);
+ win.document.close();
+}
+async function printEMI(){return shareCompletePDF();}
+
+function saveScreenshot(){
+  calculate();
+  const price=+document.getElementById("price").value||0;
+  const down=+document.getElementById("down").value||0;
+  const frequencyKey=document.getElementById("frequency").value;
+  const frequency=frequencyKey==="daily"?"Daily":frequencyKey==="weekly"?"Weekly":frequencyKey==="15days"?"Every 15 Days":"Monthly";
+  const tenure=frequencyKey==="weekly"&&+document.getElementById("months").value>0?getTenureDisplay():document.getElementById("months").value+" "+(frequencyKey==="daily"?"Days":frequencyKey==="weekly"?"Weeks":frequencyKey==="15days"?"15-Day Periods":"Months");
+  const rate=document.getElementById("rate").value+"% p.a.";
+  const fee=document.getElementById("processFee").textContent;
+  const payment=document.getElementById("emi").textContent;
+  const interest=document.getElementById("interest").textContent;
+  const total=document.getElementById("total").textContent;
+  const firstDueValue=document.getElementById("firstDueDate").value;
+  const firstDueDate=firstDueValue?new Date(firstDueValue+"T12:00:00"):null;
+  const formatDueDate=d=>d.toLocaleDateString("en-IN",{day:"2-digit",month:"2-digit",year:"numeric"});
+  const dateTime=new Date().toLocaleString("en-IN",{day:"2-digit",month:"2-digit",year:"numeric",hour:"2-digit",minute:"2-digit",hour12:true});
+  const periods=Math.max(0,+document.getElementById("months").value||0);
+  const customerName=document.getElementById("customerName").value.trim()||"Not entered";
+  const vals=[
+    ["Customer Name",customerName],["Mobile / Loan Amount",money(price)],["Down Payment",money(down)],
+    ["Finance Provider",document.getElementById("provider").selectedOptions[0].text],
+    ["Payment Frequency",frequency],["First EMI Due Date",firstDueDate?formatDueDate(firstDueDate):"Not selected"],
+    ["Tenure",tenure],["Interest Rate",rate],["Processing Fee",fee],["Finance Amount",document.getElementById("principal").textContent],
+    ["Total Interest",interest],["Total Repayment",total],
+    ["AutoPay Method",document.getElementById("autopayMethod").value||"Not selected"],
+    ["Mandate Status",document.getElementById("autopayStatus").value||"Not selected"],
+    ["UPI Mobile Number",document.getElementById("upiMobile").value||"Not entered"],
+    ["UPI App Name",document.getElementById("upiAppName").value||"Not selected"],
+    ["UPI / Bank Name",document.getElementById("upiBankName").value||"Not selected"],
+    ["Account Holder Name",document.getElementById("bankAccountName").value||"Not entered"],
+    ["Mandate / UPI Reference",document.getElementById("mandateRef").value||"Not entered"]
+  ];
+  const scale=2,w=1500,leftRowsH=vals.length*47+100,scheduleH=(periods+2)*42+100,h=Math.max(300+leftRowsH,300+scheduleH)+100;
+  const canvas=document.createElement("canvas");canvas.width=w*scale;canvas.height=h*scale;
+  const ctx=canvas.getContext("2d");ctx.scale(scale,scale);
+  ctx.fillStyle="#f4f6f8";ctx.fillRect(0,0,w,h);
+  ctx.fillStyle="#fff";roundRect(ctx,30,25,w-60,105,18);ctx.fill();
+  ctx.textAlign="center";ctx.fillStyle="#1769e0";ctx.font="bold 30px Arial";ctx.fillText(document.getElementById("provider").selectedOptions[0].text, w/2,65);
+  ctx.fillStyle="#12304a";ctx.font="bold 22px Arial";ctx.fillText("EMI PAYMENT DETAILS  |  "+dateTime,w/2,105);
+  // Left panel: payment details and summary
+  const lx=30,ly=155,lw=650;ctx.fillStyle="#fff";roundRect(ctx,lx,ly,lw,h-185,14);ctx.fill();
+  ctx.fillStyle="#eef5ff";roundRect(ctx,lx+15,ly+15,lw-30,105,12);ctx.fill();
+  ctx.textAlign="center";ctx.fillStyle="#17202a";ctx.font="bold 20px Arial";ctx.fillText(frequency+" EMI PAYMENT",lx+lw/2,ly+48);
+  ctx.fillStyle="#1769e0";ctx.font="bold 38px Arial";ctx.fillText(payment,lx+lw/2,ly+91);
+  let yy=ly+155;
+  vals.forEach(([a,b])=>{
+    ctx.textAlign="left";ctx.fillStyle="#17202a";ctx.font="bold 16px Arial";ctx.fillText(a,lx+22,yy);
+    ctx.textAlign="right";ctx.font="bold 16px Arial";
+    let text=String(b);while(ctx.measureText(text).width>lw-280&&text.length>5)text=text.slice(0,-2)+"…";
+    ctx.fillText(text,lx+lw-22,yy);
+    ctx.strokeStyle="#d9e5f4";ctx.beginPath();ctx.moveTo(lx+20,yy+12);ctx.lineTo(lx+lw-20,yy+12);ctx.stroke();yy+=47;
+  });
+  // Right panel: repayment schedule, aligned beside payment details
+  const rx=700,ry=ly,rw=770;ctx.fillStyle="#fff";roundRect(ctx,rx,ry,rw,h-185,14);ctx.fill();
+  ctx.textAlign="center";ctx.fillStyle="#12304a";ctx.font="bold 22px Arial";ctx.fillText("EMI REPAYMENT SCHEDULE",rx+rw/2,ry+38);
+  let sy=ry+75;ctx.fillStyle="#eef5ff";ctx.fillRect(rx+12,sy-22,rw-24,32);
+  ctx.fillStyle="#12304a";ctx.font="bold 14px Arial";ctx.textAlign="left";
+  const xs=[rx+20,rx+90,rx+255,rx+365,rx+475,rx+585];
+  ["No.","Due Date","EMI","Principal","Interest","Balance"].forEach((v,i)=>ctx.fillText(v,xs[i],sy));
+  sy+=34;
+  const feeNum=Math.max(0,+fee.replace(/[^0-9.]/g,"")||0),interestNum=Math.max(0,+interest.replace(/[^0-9.]/g,"")||0),totalNum=Math.max(0,+total.replace(/[^0-9.]/g,"")||0);
+  let balance=Math.max(0,price-down)+feeNum;const perPayment=periods?totalNum/periods:0;
+  for(let i=1;i<=periods;i++){
+    const due=firstDueDate?new Date(firstDueDate):null;
+    if(due){if(frequencyKey==="daily")due.setDate(due.getDate()+i-1);else if(frequencyKey==="weekly")due.setDate(due.getDate()+7*(i-1));else if(frequencyKey==="15days")due.setDate(due.getDate()+15*(i-1));else due.setMonth(due.getMonth()+i-1);}
+    let intPart=periods?interestNum/periods:0,principalPart=perPayment-intPart;
+    if(i===periods){principalPart=balance;intPart=Math.max(0,totalNum-perPayment*(periods-1)-principalPart);}
+    balance=Math.max(0,balance-principalPart);
+    ctx.fillStyle="#17202a";ctx.font="13px Arial";ctx.textAlign="left";
+    const row=[String(i),due?formatDueDate(due):"—",money(perPayment),money(principalPart),money(intPart),money(balance)];
+    row.forEach((v,j)=>ctx.fillText(v,xs[j],sy));
+    ctx.strokeStyle="#e0e6ed";ctx.beginPath();ctx.moveTo(rx+12,sy+10);ctx.lineTo(rx+rw-12,sy+10);ctx.stroke();sy+=42;
+  }
+  canvas.toBlob(blob=>{
+    if(!blob){alert("Unable to create screenshot. Please try again.");return;}
+    const file=new File([blob],"Babalu-Mobiles-EMI-Details.png",{type:"image/png"});
+    if(navigator.share&&navigator.canShare&&navigator.canShare({files:[file]})){
+      navigator.share({title:customerName+" - EMI Details",text:"EMI details and repayment schedule for "+customerName,files:[file]}).catch(()=>{});
+    }else{
+      const url=URL.createObjectURL(blob),a=document.createElement("a");a.href=url;
+      a.download=(customerName.replace(/[^a-z0-9]+/gi,"-").replace(/^-+|-+$/g,"")||"Customer")+"-EMI-Details.png";
+      document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000);alert("EMI screenshot saved.");
+    }
+  },"image/png");
+}
+
+function roundRect(ctx,x,y,w,h,r){
+  ctx.beginPath();
+  ctx.moveTo(x+r,y);ctx.arcTo(x+w,y,x+w,y+h,r);ctx.arcTo(x+w,y+h,x,y+h,r);
+  ctx.arcTo(x,y+h,x,y,r);ctx.arcTo(x,y,x+w,y,r);ctx.closePath();
+}
+
+async function shareEMI(){
+  const price=Math.max(0,+document.getElementById("price").value||0);
+  const down=Math.max(0,+document.getElementById("down").value||0);
+  const rate=Math.max(0,+document.getElementById("rate").value||0);
+  const n=+document.getElementById("months").value;
+  const loanAmount=Math.max(0,price-down);
+  const processFee=price<=0 || loanAmount<=0 ? 0 : (loanAmount>3000 ? 500 : 200);
+  const P=loanAmount+processFee;
+  const emiText=document.getElementById("emi").textContent;
+  const interest=document.getElementById("interest").textContent;
+  const total=document.getElementById("total").textContent;
+  const feeText=document.getElementById("processFee").textContent;
+  const dueDateRaw=document.getElementById("firstDueDate")?.value || "";
+  const dueDate=dueDateRaw ? new Date(dueDateRaw+"T12:00:00").toLocaleDateString("en-IN",{day:"2-digit",month:"2-digit",year:"numeric"}) : "Not selected";
+  const msg=`\n\nEMI Details\nFirst EMI Due Date: ${dueDate}\nMobile/Loan: ₹${price.toLocaleString("en-IN")}\nDown Payment: ₹${down.toLocaleString("en-IN")}\nFinance Amount: ₹${P.toLocaleString("en-IN")}\nInterest: ${rate}% p.a.\nTenure: ${n} months\nMonthly EMI: ${emiText}\nTotal Interest: ${interest}\nProcessing Fee: ${feeText}\nTotal Repayment: ${total}`;
+  if(navigator.share){try{await navigator.share({title:" EMI Details",text:msg});}catch(e){}}
+  else {await navigator.clipboard.writeText(msg); alert("EMI details copied. You can paste them in WhatsApp.");}
+}
+
+
+// CIBIL base rates: higher score = lower base interest.
+const cibilBaseRate={800:10,750:12,700:15,650:18,300:22};
+
+// Down-payment discount: higher down payment = additional rate reduction.
+const downRateDiscount={20:0,25:0.5,30:1,40:2,45:2.5,50:3};
+
+const cibilLockedDownPct={800:20,750:25,700:30,650:40,300:50};
+
+function applyCibilDownPaymentLock(){
+  const price=Math.max(0,+document.getElementById("price").value||0);
+  const score=+document.getElementById("cibilScore").value;
+  const downPct=document.getElementById("downPct");
+  const down=document.getElementById("down");
+  const note=document.getElementById("cibilDownNote");
+  const lockLabel=document.getElementById("downLockLabel");
+  if(price>10000 && score>0){
+    const lockedPct=cibilLockedDownPct[score] ?? 50;
+    downPct.value=String(lockedPct); downPct.disabled=true;
+    down.value=Math.round(price*lockedPct/100); down.readOnly=true;
+    if(note) note.style.display="block"; if(lockLabel) lockLabel.textContent="🔒 CIBIL locked";
+    return lockedPct;
+  }
+  downPct.disabled=false; if(note) note.style.display="none"; if(lockLabel) lockLabel.textContent="";
+  return null;
+}
+
+function isPersonalFinance(){
+  return document.getElementById("provider").value==="personal";
+}
+
+function updateProviderMode(){
+  const personal=isPersonalFinance();
+  const cibil=document.getElementById("cibilScore");
+  const downPct=document.getElementById("downPct");
+  const down=document.getElementById("down");
+  const rate=document.getElementById("rate");
+  const rateLock=document.getElementById("rateLockLabel");
+  const feeWrap=document.getElementById("personalFeeWrap");
+  const downLock=document.getElementById("downLockLabel");
+  const cibilNote=document.getElementById("cibilDownNote");
+  const rateNote=document.getElementById("rateNote");
+
+  cibil.disabled=personal;
+  downPct.disabled=false;
+  down.readOnly=!personal;
+  rate.readOnly=!personal;
+  rate.title=personal ? "Editable Personal Finance interest rate" : "Interest rate is calculated automatically";
+  if(rateLock) rateLock.textContent=personal ? "✏️" : "🔒";
+  if(feeWrap) feeWrap.style.display=personal ? "block" : "none";
+  if(downLock) downLock.textContent="";
+  if(cibilNote) cibilNote.style.display="none";
+  if(rateNote) rateNote.style.display=personal ? "none" : (Math.max(0,+document.getElementById("price").value||0)>0 ? "block" : "none");
+
+  if(personal){
+    if(!document.getElementById("personalFee").value) document.getElementById("personalFee").value=0;
+  } else {
+    updateRate();
+  }
+  calculate();
+}
+
+function updateRate(){
+  if(isPersonalFinance()){ calculate(); return; }
+  const priceForNote=Math.max(0,+document.getElementById("price").value||0);
+  const rateNote=document.getElementById("rateNote");
+  if(rateNote) rateNote.style.display=priceForNote>0 ? "block" : "none";
+  const lockedPct=applyCibilDownPaymentLock();
+  const score=+document.getElementById("cibilScore").value;
+  const pct=lockedPct!==null ? String(lockedPct) : document.getElementById("downPct").value;
+  const base=cibilBaseRate[score] ?? 22;
+  const discount=pct!=="custom" ? (downRateDiscount[pct] ?? 0) : 0;
+  const price=Math.max(0,+document.getElementById("price").value||0);
+  const down=Math.max(0,+document.getElementById("down").value||0);
+  const actualDownPct=price>0 ? (down/price)*100 : 0;
+  // 40%+ down payment gives 0% only for Good, Very Good, or Excellent CIBIL.
+  // Fair and Lower Score customers still pay interest even with 40%+ down payment.
+  const zeroInterestEligible = score===800 || score===750 || score===700;
+  const rate=price<=0 ? 0 : ((actualDownPct>=40 && zeroInterestEligible) ? 0 : Math.max(0,base-discount));
+  document.getElementById("rate").value=rate.toFixed(2).replace(/\.00$/,'');
+  calculate();
+}
+
+function syncDownFromPct(){
+  if(isPersonalFinance()){
+    const pct=document.getElementById("downPct").value;
+    if(pct!=="custom"){
+      const price=Math.max(0,+document.getElementById("price").value||0);
+      document.getElementById("down").value=Math.round(price*+pct/100);
+    }
+    calculate(); return;
+  }
+  const lockedPct=applyCibilDownPaymentLock();
+  const pct=lockedPct!==null ? String(lockedPct) : document.getElementById("downPct").value;
+  if(pct!=="custom"){
+    const price=Math.max(0,+document.getElementById("price").value||0);
+    document.getElementById("down").value=Math.round(price*+pct/100);
+  }
+  updateRate();
+}
+
+function syncPctFromDown(){
+ const price=Math.max(0,+document.getElementById("price").value||0);
+ const down=Math.max(0,+document.getElementById("down").value||0);
+ const pct=price?down/price*100:0;
+ const sel=document.getElementById("downPct");
+ const match=[...sel.options].find(o=>o.value!=="custom" && Math.abs(+o.value-pct)<0.01);
+ sel.value=match?match.value:"custom";
+ calculate();
+}
+document.getElementById("price").addEventListener("input",()=>{ updateRate(); });
+document.getElementById("cibilScore").addEventListener("change",updateRate);
+document.getElementById("provider").addEventListener("change",updateProviderMode);
+  document.getElementById("down").addEventListener("input",()=>{ if(isPersonalFinance()) syncPctFromDown(); });
+  document.getElementById("rate").addEventListener("input",()=>{ if(isPersonalFinance()) calculate(); });
+  document.getElementById("personalFee").addEventListener("input",()=>{ if(isPersonalFinance()) calculate(); });
+
+function updateTenureOptions(){
+  const frequency=document.getElementById("frequency")?.value || "monthly";
+  const sel=document.getElementById("months");
+  const label=document.getElementById("tenureLabel");
+  const current=Number.isFinite(+sel.value) ? +sel.value : 0;
+
+  const configs = {
+    monthly:{label:"EMI Tenure (Months)", values:Array.from({length:18},(_,i)=>i+1), fallback:1},
+    daily:{label:"EMI Tenure (Days)", values:[0,30,60,90,120,180,270,365], fallback:0},
+    weekly:{label:"EMI Tenure (Weeks)", values:[0,4,8,12,16,20,24,28,32,36,40,44,48,52,56,60], fallback:0},
+    "15days":{label:"EMI Tenure (15-Day Periods)", values:[0,2,4,6,8,12,18,24], fallback:0}
+  };
+
+  const cfg=configs[frequency] || configs.monthly;
+  label.textContent=cfg.label;
+  sel.innerHTML=cfg.values.map(v=>{
+    let text=String(v);
+    if(frequency==="weekly" && v>0){
+      const months=v/4;
+      text += ` Weeks (${months} ${months===1?"Month":"Months"})`;
+    }
+    return `<option value="${v}">${text}</option>`;
+  }).join("");
+  sel.value=cfg.values.includes(current) ? current : cfg.fallback;
+}
+
+function getTenureDisplay(){
+  const frequency=document.getElementById("frequency")?.value || "monthly";
+  const n=Math.max(0,Number(document.getElementById("months")?.value)||0);
+  if(frequency==="weekly" && n>0){
+    const months=n/4;
+    return `${n} Weeks (${months} ${months===1?"Month":"Months"})`;
+  }
+  const unit=frequency==="daily"?"Days":frequency==="15days"?"15-Day Periods":"Months";
+  return `${n} ${unit}`;
+}
+
+function updateLiveDateTime(){
+  const now=new Date();
+  const text=now.toLocaleString("en-IN",{day:"2-digit",month:"2-digit",year:"numeric",hour:"2-digit",minute:"2-digit",second:"2-digit",hour12:true});
+  const el=document.getElementById("liveDateTime");
+  if(el) el.textContent="Date & Time: "+text;
+}
+
+function calculate(){
+  const price=Math.max(0,Number(document.getElementById("price").value)||0);
+  const down=Math.max(0,Number(document.getElementById("down").value)||0);
+  const annual=Math.max(0,Number(document.getElementById("rate").value)||0);
+  const n=Math.max(0,Number(document.getElementById("months").value)||0);
+  const frequency=document.getElementById("frequency")?.value || "monthly";
+  const periodsPerYear =
+    frequency==="daily" ? 365 :
+    frequency==="weekly" ? 52 :
+    frequency==="15days" ? 24 : 12;
+  const periods=n;
+
+  // Loan amount after down payment.
+  const loanAmount=Math.max(0,price-down);
+
+  // REQUIRED RULE: ₹200 fee for loan amount ₹3,000 or below; ₹500 above ₹3,000.
+  const processFee = isPersonalFinance() ? Math.max(0,Number(document.getElementById("personalFee").value)||0) : (price <= 0 || loanAmount <= 0 ? 0 : (loanAmount > 3000 ? 500 : 200));
+
+  // Processing fee is financed, so EMI is calculated on loan + fee.
+  const financedAmount = loanAmount + processFee;
+  // Interest is calculated for the selected payment frequency and is capped at ₹3,000 total for the full tenure.
+  const r=annual/(periodsPerYear*100);
+
+  let emi=0;
+  if(financedAmount>0 && n>0){
+    emi = r===0
+      ? financedAmount/n
+      : financedAmount*r*Math.pow(1+r,periods)/(Math.pow(1+r,periods)-1);
+  }
+
+  // Interest cap: total interest charged across the full tenure cannot exceed ₹3,000.
+  const calculatedTotal=emi*periods;
+  const calculatedInterest=Math.max(0,calculatedTotal-financedAmount);
+  const interestCapped=calculatedInterest>3000;
+  const interest=interestCapped ? 3000 : calculatedInterest;
+  const total=financedAmount+interest;
+  if(interestCapped && n>0) emi=total/n;
+
+  document.getElementById("providerOut").textContent=document.getElementById("provider").value;
+  document.getElementById("emi").textContent=money(emi);
+   document.getElementById("emiLabel").textContent =
+     frequency==="daily" ? "Daily EMI" :
+     frequency==="weekly" ? "Weekly EMI" :
+     frequency==="15days" ? "15 Days EMI" : "Monthly EMI";
+   document.getElementById("frequencyNote").textContent =
+     frequency==="daily" ? "Note: The amount shown is your Daily EMI payment." :
+     frequency==="weekly" ? "Note: The amount shown is your Weekly EMI payment." :
+     frequency==="15days" ? "Note: The amount shown is your 15 Days EMI payment." :
+     "Note: The amount shown is your Monthly EMI payment.";
+  document.getElementById("loanAmountOut").textContent=money(loanAmount);
+  document.getElementById("processFee").textContent=money(processFee);
+  document.getElementById("principal").textContent=money(financedAmount);
+  document.getElementById("interest").textContent=money(interest);
+  document.getElementById("total").textContent=money(total);
+
+  // Keep the on-page EMI Payment Details card synced with the live calculation.
+  const freqText =
+    frequency==="daily" ? "Daily" :
+    frequency==="weekly" ? "Weekly" :
+    frequency==="15days" ? "Every 15 Days" : "Monthly";
+  const tenureUnit =
+    frequency==="daily" ? "Days" :
+    frequency==="weekly" ? "Weeks" :
+    frequency==="15days" ? "15-Day Periods" : "Months";
+
+  const firstDueValue=document.getElementById("firstDueDate")?.value || "";
+  const firstDueDate=firstDueValue ? new Date(firstDueValue+"T12:00:00") : null;
+  const formatDueDate=d=>d.toLocaleDateString("en-IN",{day:"2-digit",month:"2-digit",year:"numeric"});
+  document.getElementById("shotFirstDueDate").textContent=firstDueDate ? formatDueDate(firstDueDate) : "Not selected";
+  document.getElementById("shotPrice").textContent=money(price);
+  document.getElementById("shotDown").textContent=money(down);
+  document.getElementById("shotProvider").textContent=document.getElementById("provider").value;
+  document.getElementById("shotFrequency").textContent=freqText;
+  document.getElementById("shotTenure").textContent=getTenureDisplay();
+  document.getElementById("shotRate").textContent=annual+"%";
+  document.getElementById("shotFee").textContent=money(processFee);
+  document.getElementById("shotFinance").textContent=money(financedAmount);
+  document.getElementById("shotInterest").textContent=money(interest);
+  document.getElementById("shotTotal").textContent=money(total);
+  document.getElementById("shotEmi").textContent=money(emi);
+  document.getElementById("shotEmiLabel").textContent =
+    frequency==="daily" ? "Daily EMI" :
+    frequency==="weekly" ? "Weekly EMI" :
+    frequency==="15days" ? "15 Days EMI" : "Monthly EMI";
+
+  let bal=financedAmount, rows="";
+  for(let i=1;i<=periods;i++){
+    // When the ₹3,000 cap applies, spread the capped interest evenly so the
+    // schedule matches the displayed total repayment and EMI.
+    const int=interestCapped ? interest/periods : bal*r;
+    let prin=emi-int;
+    let pay=emi;
+    if(i===periods){
+      prin=bal;
+      pay=prin+int;
+      bal=0;
+    }else{
+      bal=Math.max(0,bal-prin);
+    }
+    rows+=`<tr><td>${i}</td><td>${money(pay)}</td><td>${money(prin)}</td><td>${money(int)}</td><td>${money(bal)}</td></tr>`;
+  }
+  document.getElementById("schedule").innerHTML=rows;
+}
+[1,2].forEach(function(n){
+  const input=document.getElementById("productPhoto"+n);
+  input?.addEventListener("change",function(){
+    const file=this.files && this.files[0];
+    const img=document.getElementById("productPhoto"+n+"Preview");
+    const placeholder=document.getElementById("productPhoto"+n+"Placeholder");
+    if(!file){img.removeAttribute("src");img.style.display="none";placeholder.style.display="block";return;}
+    if(!file.type.startsWith("image/")){alert("Please choose an image file.");this.value="";return;}
+    const reader=new FileReader();
+    reader.onload=function(){img.src=reader.result;img.style.display="block";placeholder.style.display="none";};
+    reader.readAsDataURL(file);
+  });
+});
+document.getElementById('customerDate').value=new Date().toISOString().slice(0,10);
+const firstDueInput=document.getElementById("firstDueDate");
+if(firstDueInput){const firstDue=new Date();firstDue.setMonth(firstDue.getMonth()+1);firstDueInput.value=firstDue.toISOString().slice(0,10);}
+updateTenureOptions();
+updateLiveDateTime();
+setInterval(updateLiveDateTime,1000);
+document.getElementById("downPct").value="0";
+document.getElementById("down").value="0";
+document.getElementById("rate").value="0";
+document.getElementById("months").value="0";
+updateProviderMode();
+</script>
+</body>
+</html>
